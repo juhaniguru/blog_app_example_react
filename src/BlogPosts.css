@@ -1,0 +1,88 @@
+.blog-posts-container {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 16px;
+  padding: 16px;
+}
+
+.blog-post-card {
+  background-color: #f9f9f9;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  padding: 16px;
+  transition: box-shadow 0.3s ease;
+  margin-bottom: 8px;
+  position: relative; /* Make sure the card is a positioning context */
+}
+
+.blog-post-card:hover {
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+}
+
+
+.blog-post-title {
+  font-size: 1.2rem;
+  font-weight: bold;
+  margin-bottom: 8px;
+}
+
+.blog-post-id {
+  font-size: 0.875rem;
+  color: #6b7280;
+}
+
+.remove-button {
+  position: absolute; /* Position the button absolutely within the card */
+  bottom: 8px;      /* Position it 8px from the bottom */
+  right: 8px;       /* Position it 8px from the right */
+  background-color: #f44336; /* Red background */
+  color: white;          /* White text */
+  border: none;         /* Remove the border */
+  padding: 8px 12px;    /* Add some padding */
+  border-radius: 4px;    /* Rounded corners */
+  cursor: pointer;       /* Make it look clickable */
+  font-size: 0.75rem;    /* Smaller font size */
+  transition: background-color 0.3s ease; /* Smooth transition */
+}
+
+.edit-button {
+  position: absolute; /* Position the button absolutely within the card */
+  bottom: 0px;      /* Position it 8px from the bottom */
+  left: 8px;       /* Position it 8px from the right */
+  background-color: #f44336; /* Red background */
+  color: white;          /* White text */
+  border: none;         /* Remove the border */
+  padding: 8px 12px;    /* Add some padding */
+  border-radius: 4px;    /* Rounded corners */
+  cursor: pointer;       /* Make it look clickable */
+  font-size: 0.75rem;    /* Smaller font size */
+  transition: background-color 0.3s ease; /* Smooth transition */
+}
+
+.remove-button:hover {
+  background-color: #d32f2f; /* Darker red on hover */
+}
+
+
+.app-container {
+    margin: 0 auto;
+    padding: 1rem;
+    max-width: 1200px;
+}
+
+.app-title {
+    font-size: 2.25rem;
+    font-weight: bold;
+    text-align: center;
+    margin-bottom: 2rem;
+    background: linear-gradient(to right, #6366f1, #8b5cf6);
+    color: transparent;
+    background-clip: text;
+}
+
+.blog-post-body{
+  font-size: 1rem;
+  color: #374151;
+  margin-bottom: 1rem;
+  line-height: 1.5;
+}

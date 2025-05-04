@@ -1,0 +1,48 @@
+.button-group {
+    display: flex;
+    justify-content: flex-end;
+    margin-top: 1rem;
+    gap: 10px;
+}
+
+.back-button {
+  padding: 0.75rem 1.5rem;
+  background-color: #3b82f6;
+  color: #ffffff;
+  font-size: 1rem;
+  font-weight: bold;
+  border: none;
+  border-radius: 0.375rem;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.back-button:hover {
+  background-color: #2563eb;
+}
+
+.add-comment-button {
+  padding: 0.75rem 1.5rem;
+  background-color: #10b981;
+  color: #ffffff;
+  font-size: 1rem;
+  font-weight: bold;
+  border: none;
+  border-radius: 0.375rem;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.add-comment-button:hover {
+  background-color: #059669;
+}
+
+.button-container {
+    display: flex;
+    justify-content: flex-end;
+    gap: 10px;
+    margin-top: 10px;
+  }
+
+
+
