@@ -1,4 +1,4 @@
-# Näin saat projtkain päälle
+# Näin saat projektin päälle
 
 ## Kloonaa koodi
 
