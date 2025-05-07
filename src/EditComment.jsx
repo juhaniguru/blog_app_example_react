@@ -1,10 +1,26 @@
-import React, { useState } from 'react';
-import { useNavigate } from 'react-router-dom';
+import React, { useEffect, useState } from 'react';
+import { useNavigate, useParams } from 'react-router-dom';
 import './NewPost.css'; 
 function EditComment() {
     const [comment, setComment] = useState('');
    
     const navigate = useNavigate();
+    const {postId, commentId} = useParams()
+
+    useEffect(() => {
+        const fetchComment = async () => {
+            try {
+                const response = await fetch(`http://localhost:2001/api/v1/blogs/${postId}/comments`)
+                if(!response.ok) {
+                    throw new Error(response.statusText)
+                }
+                const comments = await response.json()
+                console.log(comments)
+            } catch(e) {
+                console.log(e)
+            }
+        }
+    }, [])
 
     const handleSubmit = (e) => {
         e.preventDefault();

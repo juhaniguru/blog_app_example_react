@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
 import './NewPost.css'; 
 function NewComment() {
-    const [comment, setComment] = useState('');
+    const [comment, setComment] = useState("");
 
     const {id} = useParams()
    
@@ -10,11 +10,40 @@ function NewComment() {
 
     const handleSubmit = async (e) => {
         e.preventDefault();
+        try {
+            // vrt axios
+            // axios.get('urli')
+            // axios.post('url')
+            // axios.delete('url')
+            const requestBody = {comment: comment}
+            // const requestBody = {comment}
+            const response = await fetch(`http://localhost:2001/api/v1/blogs/${id}/comments`, {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify(requestBody)
+            })
+            if(!response.ok) {
+                throw new Error(response.statusText)
+            }
+            const data = await response.json()
+            //console.log(data)
+            navigate(`/posts/${id}`)
+        } catch(e) {
+            console.log(e)
+        }
+
+
        
         
         
-        navigate(`/posts/${id}`); 
+        //navigate(`/posts/${id}`); 
     };
+
+    const updateComment = (e) => {
+        setComment(e.target.value)
+    }
 
     
 
@@ -28,7 +57,7 @@ function NewComment() {
                     <textarea
                         id="body"
                         value={comment}
-                        onChange={() => {}}
+                        onChange={updateComment}
                         className="form-textarea"
                         rows={6}
                         required

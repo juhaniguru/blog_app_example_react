@@ -31,7 +31,7 @@ function BlogPostComments ()  {
   return (
     <div className="blog-posts-container">
       {comments.map((comment) => (
-       <CommentItem comment={comment} key={comment.id} navigate={navigate} />
+       <CommentItem comment={comment} key={comment.id} navigate={navigate} postId={id} />
       ))}
       <div className="button-group">
         <button className="back-button" onClick={() => navigate(-1)}>
@@ -45,7 +45,7 @@ function BlogPostComments ()  {
   );
 };
 
-function CommentItem({comment, navigate}) {
+function CommentItem({comment, navigate, postId}) {
     return (
         <div key={comment.id} className="blog-post-card">
           
@@ -54,9 +54,11 @@ function CommentItem({comment, navigate}) {
         <button className="" onClick={() => {}}>
           Remove
         </button>
+        {/*/posts/:postId/comments/:commentId*/}
         <button
           className=""
-          onClick={() => navigate(`/comments/${comment.id}`)}
+          
+          onClick={() => navigate(`/posts/${postId}/comments/${comment.id}`)}
         >
           Edit
         </button>

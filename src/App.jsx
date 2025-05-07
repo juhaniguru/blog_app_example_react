@@ -33,7 +33,7 @@ function App() {
             <Route path="/" element={<BlogPosts />} />
             <Route path="/new-post" element={<NewPost />} />
             <Route path="/posts/:id" element={<BlogPostComments />} />
-            <Route path="/comments/:id" element={<EditComment />} />
+            <Route path="/posts/:postId/comments/:commentId" element={<EditComment />} />
             <Route path="/posts/:id/new-comment" element={<NewComment />} />
 
             
