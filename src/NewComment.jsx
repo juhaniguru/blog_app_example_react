@@ -8,13 +8,15 @@ function NewComment() {
    
     const navigate = useNavigate();
 
-    const handleSubmit = (e) => {
+    const handleSubmit = async (e) => {
         e.preventDefault();
        
-        console.log('Form submitted:', { comment });
+        
         
         navigate(`/posts/${id}`); 
     };
+
+    
 
     return (
         <div className="new-post-container">
@@ -26,7 +28,7 @@ function NewComment() {
                     <textarea
                         id="body"
                         value={comment}
-                        onChange={(e) => setComment(e.target.value)}
+                        onChange={() => {}}
                         className="form-textarea"
                         rows={6}
                         required

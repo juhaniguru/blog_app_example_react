@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import './BlogPosts.css';
 import './Comments.css'
 import { useNavigate, useParams } from 'react-router-dom';
@@ -9,9 +9,24 @@ function BlogPostComments ()  {
     const navigate = useNavigate()
 
   
-  const [comments, setComments] = useState([
-    {id: 1, comment: 'Lorem Ipsum sldkjslfs fslkjs sflfskjdsf lfsdkjsfd', posts_id: 1}
-  ])
+  const [comments, setComments] = useState([])
+
+  useEffect(() => {
+    const fetchComments = async () => {
+      try {
+        const response = await fetch(`http://localhost:2001/api/v1/blogs/${id}/comments`)
+        if(!response.ok) {
+            
+            throw new Error(response.statusText)
+        }
+        const responseData = await response.json()
+        setComments(responseData)
+      } catch(e) {
+        console.log(e)
+      }
+    }
+    fetchComments()
+  }, [])
 
   return (
     <div className="blog-posts-container">
