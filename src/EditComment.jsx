@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
 import './NewPost.css'; 
 function EditComment() {
-    const [comment, setComment] = useState('');
+    const [comment, setComment] = useState("");
    
     const navigate = useNavigate();
     const {postId, commentId} = useParams()
@@ -15,11 +15,20 @@ function EditComment() {
                     throw new Error(response.statusText)
                 }
                 const comments = await response.json()
-                console.log(comments)
+                const needle = comments.find((c) => {
+                    return c.id == commentId
+                })
+                if(needle == null) {
+                    throw new Error('comment not found')
+                }
+
+                setComment(needle.comment)
+
             } catch(e) {
                 console.log(e)
             }
         }
+        fetchComment()
     }, [])
 
     const handleSubmit = (e) => {
