@@ -30,7 +30,16 @@ function BlogPosts ()  {
         if(!response.ok) {
           throw new Error(response.statusText)
         }
-        const responseData = await response.json()
+        let responseData = await response.json()
+        console.log("ennen mappia", responseData)
+        
+        responseData = responseData.map((blogPost) => {
+          
+          // return {id: blogPost.id, name: blogPost.name, body: blogPost.body, imageUrl: '/images/cheese_burger.jpg'}
+          return {...blogPost, imageUrl: '/images/cheese_burger.jpg'}
+        })
+        
+        console.log("mapin jalkeen", responseData)
         setPosts(responseData)
       } catch(e) {
           console.log(e)

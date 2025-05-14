@@ -10,19 +10,21 @@ function EditComment() {
     useEffect(() => {
         const fetchComment = async () => {
             try {
-                const response = await fetch(`http://localhost:2001/api/v1/blogs/${postId}/comments`)
+                const response = await fetch(`http://localhost:2001/api/v1/blogs/${postId}/comments/${commentId}`)
                 if(!response.ok) {
                     throw new Error(response.statusText)
                 }
-                const comments = await response.json()
-                const needle = comments.find((c) => {
+                // const comments = await response.json()
+                const comment = await response.json()
+                console.log(comment)
+                /*const needle = comments.find((c) => {
                     return c.id == commentId
                 })
                 if(needle == null) {
                     throw new Error('comment not found')
-                }
+                }*/
 
-                setComment(needle.comment)
+                setComment(comment.comment)
 
             } catch(e) {
                 console.log(e)
@@ -31,12 +33,30 @@ function EditComment() {
         fetchComment()
     }, [])
 
-    const handleSubmit = (e) => {
+    const handleSubmit = async (e) => {
         e.preventDefault();
        
-        console.log('Form submitted:', { comment });
-        
-        navigate('/'); 
+        const requestBody = {comment: comment}
+        // {comment}
+        try {
+            const response = await fetch(`http://localhost:2001/api/v1/blogs/${postId}/comments/${commentId}`, {
+                method: 'PUT',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify(requestBody)
+
+            })
+            if(!response.ok) {
+                throw new Error(response.statusText)
+            }
+            //navigate(-1)
+            navigate(`/posts/${postId}`)
+        } catch(e) {
+            console.log(e)
+        }
+
+        //navigate('/'); 
     };
 
     return (
